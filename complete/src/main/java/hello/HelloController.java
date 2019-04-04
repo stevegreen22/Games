@@ -17,7 +17,6 @@ import static hello.Application.gamers;
 @Controller
 public class HelloController {
 
-
     @RequestMapping("/")
     public String homepage() {
         return "welcome";
@@ -46,7 +45,6 @@ public class HelloController {
         gamers.put("Jerkwood", new Gamer("Jerkwood"));
         gamers.put("Mark", new Gamer("Mark"));
 
-
 //        List<Game> games = new ArrayList<>();
 //        try {
 //            Scanner scan = new Scanner(new File("C:\\Users\\Steve\\Downloads\\gs-spring-boot-master\\gs-spring-boot-master\\complete\\src\\main\\gameslist"));
@@ -57,16 +55,12 @@ public class HelloController {
 //        } catch (FileNotFoundException e) {
 //            e.printStackTrace();
 //        }
-//
 //        GamerRepo pr = new GamerRepo();
 //        Gamer steve = pr.getPersonByName(gamers, "Jerkwood");
-
-
 
         //gamers.forEach((k,v) -> gamerRepo.save(v));
 
         model.addAttribute("gamers", gamers);
-
         return "gamers";
     }
 
