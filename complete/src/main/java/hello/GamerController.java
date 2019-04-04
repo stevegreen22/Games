@@ -26,6 +26,7 @@ public class GamerController {
 //        }
 
         model.addAttribute("games", gamers.get(gamer).getExcited());
+        model.addAttribute("gamer", gamers.get(gamer));
 
         return "games";
     }

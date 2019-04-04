@@ -27,6 +27,18 @@
         <li th:each="game : ${games}" th:text="${game.name}"></li>
     </ol>
 
+    <span>Excited</span>
+    <ol>
+        <li th:each="game : ${gamer.getExcited()}" th:text="${game.name}"></li>
+    </ol>
+
+
+    <span>Wants</span>
+
+    <ol>
+        <li th:each="game : ${gamer.getWants()}" th:text="${game.name}"></li>
+    </ol>
+
 </main>
 <!-- /.container -->
 
