@@ -24,12 +24,17 @@
     </div>
 
     <ul>
-        <li th:each="key: ${gamers.keySet()}">
-            <span th:text="${gamers.get(key).getName()}"></span>
-            <a href="games.html" th:href="@{/{gamer}/games (gamer=${gamers.get(key).getName()}) }">View games</a></li>
-        </li>
-    </ul>
+        <!--<li th:each="key: ${gamers.keySet()}">-->
+            <!--<span th:text="${gamers.get(key).getName()}"></span>-->
+            <!--<a href="games.html" th:href="@{/{gamer}/games (gamer=${gamers.get(key).getName()}) }">View games</a></li>-->
+        <!--</li>-->
 
+        <li th:each="gamer : ${gamers}">
+            <span th:text="${gamer.getName()}"></span>
+            <a href="games.html" th:href="@{/{gamer}/games (gamer=${gamer.getName()}) }">View games</a>
+        </li>
+
+    </ul>
 
 </main>
 <!-- /.container -->
