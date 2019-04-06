@@ -31,7 +31,7 @@
 
         <li th:each="gamer : ${gamers}">
             <span th:text="${gamer.getName()}"></span>
-            <a href="games.html" th:href="@{/{gamer}/games (gamer=${gamer.getName()}) }">View games</a>
+            <a href="games.html" th:href="@{/{gamerid}/games (gamerid=${gamer.getId()}) }">View games</a>
         </li>
 
     </ul>

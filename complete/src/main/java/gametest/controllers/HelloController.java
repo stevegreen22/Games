@@ -45,11 +45,6 @@ public class HelloController {
     @RequestMapping("/allRegisteredGamers")
     public String index(Model model) {
 
-        //Map<String, Gamer> gamers = new HashMap<>();
-        gamers.put("Steve", new Gamer("Steve"));
-        gamers.put("Jerkwood", new Gamer("Jerkwood"));
-        gamers.put("Mark", new Gamer("Mark"));
-
         List<Gamer>gamers = gamerRepo.findAll();
 
 //        List<Game> games = new ArrayList<>();
