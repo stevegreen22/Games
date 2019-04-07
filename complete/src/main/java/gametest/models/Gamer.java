@@ -24,6 +24,7 @@ public class Gamer {
     private Long id;
     private String name;
 
+    @Transient private List<Game>allGames = new ArrayList<>();
     @Transient private List<Game>excited = new ArrayList<>();
     @Transient private List<Game>wants = new ArrayList<>();
     @Transient private List<Game>likes = new ArrayList<>();
@@ -31,6 +32,7 @@ public class Gamer {
     @Transient private final String prefix_win = "C:\\Users\\Steve\\Downloads\\gs-spring-boot-master\\gs-spring-boot-master\\complete\\src\\main\\";
     @Transient private final String prefix_mac = "/Users/SteveGreen/Downloads/gameapp/Games/complete/src/main/resources/tempgamelists/";
     @Transient private UserInfo bggUserinfo = null;
+
 
     public Gamer(String name){
         this.name = name;
@@ -44,7 +46,12 @@ public class Gamer {
         CreateFuckNo(prefix_mac + this.name+"_fuckno");
     }
 
+    public Long getId() { return id; }
 
+    public List<Game> getAllGames() { return allGames; }
+    public void setAllGames(List<Game>games){
+        allGames = games;
+    }
 
     public UserInfo getBggUserinfo() {
         return bggUserinfo;

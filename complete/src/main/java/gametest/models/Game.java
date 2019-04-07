@@ -2,10 +2,7 @@ package gametest.models;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Builder(toBuilder = true)
@@ -19,11 +16,16 @@ public class Game {
     @Id
     @GeneratedValue
     private Long id;
-
     private String name;
 
+    //obtain some values using the BGG API and store them.  Odds are these games may be played again.
+    //When a game is removed from the list because it's been played, we will add it to 'played' list
+    //so this information will still be useful to keep.
+    @Transient
     private int minPlayerCount;
+    @Transient
     private int maxPlayerCount;
+    @Transient
     private int ownerId;
 
     public Game(String name) {

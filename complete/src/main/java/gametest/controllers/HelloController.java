@@ -5,7 +5,7 @@ import com.omertron.bgg.BggException;
 import com.omertron.bgg.model.UserInfo;
 import gametest.models.Game;
 import gametest.models.Gamer;
-import gametest.repo.GamerRepo;
+import gametest.repo.JpaGamerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,13 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.ArrayList;
 import java.util.List;
 
-import static gametest.Application.gamers;
-
 @Controller
 public class HelloController {
 
     @Autowired
-    GamerRepo gamerRepo;
+    JpaGamerRepo jpaGamerRepo;
 
     @RequestMapping("/")
     public String homepage() {
@@ -42,29 +40,29 @@ public class HelloController {
         return "welcome";
     }
 
-    @RequestMapping("/allRegisteredGamers")
-    public String index(Model model) {
-
-        List<Gamer>gamers = gamerRepo.findAll();
-
-//        List<Game> games = new ArrayList<>();
-//        try {
-//            Scanner scan = new Scanner(new File("C:\\Users\\Steve\\Downloads\\gs-spring-boot-master\\gs-spring-boot-master\\complete\\src\\main\\gameslist"));
-//            while (scan.hasNextLine()) {
-//                games.add(new Game(scan.nextLine()));
-//            }
-//            scan.close();
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        GamerRepo pr = new GamerRepo();
-//        Gamer steve = pr.getPersonByName(gamers, "Jerkwood");
-
-        //gamers.forEach((k,v) -> gamerRepo.save(v));
-
-        model.addAttribute("gamers", gamers);
-        return "gamers";
-    }
+//    @RequestMapping("/allRegisteredGamers")
+//    public String index(Model model) {
+//
+//        List<Gamer>gamers = jpaGamerRepo.findAll();
+//
+////        List<Game> games = new ArrayList<>();
+////        try {
+////            Scanner scan = new Scanner(new File("C:\\Users\\Steve\\Downloads\\gs-spring-boot-master\\gs-spring-boot-master\\complete\\src\\main\\gameslist"));
+////            while (scan.hasNextLine()) {
+////                games.add(new Game(scan.nextLine()));
+////            }
+////            scan.close();
+////        } catch (FileNotFoundException e) {
+////            e.printStackTrace();
+////        }
+////        JpaGamerRepo pr = new JpaGamerRepo();
+////        Gamer steve = pr.getPersonByName(gamers, "Jerkwood");
+//
+//        //gamers.forEach((k,v) -> jpaGamerRepo.save(v));
+//
+//        model.addAttribute("gamers", gamers);
+//        return "gamers";
+//    }
 
 
 
