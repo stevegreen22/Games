@@ -2,7 +2,6 @@ package gametest.controllers;
 
 import gametest.models.Gamer;
 import gametest.repo.GamerRepo;
-import gametest.repo.JpaGamerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,8 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
-
-import static gametest.Application.gamers;
 
 @Controller
 public class GamerController {
@@ -29,23 +26,16 @@ public class GamerController {
     }
 
     @RequestMapping("/{gamerid}/games")
-    public String userGames(@PathVariable final Long gamerid,
-                            Model model){
+    public String userGames(@PathVariable final Long gamerid, Model model){
 
         Gamer gamer = gamerRepo.getGamerById(gamerid);
         System.out.println("name:" + gamer.getName());
 
-        gamerRepo.populateGamerGames(gamer);
+//        gamerRepo.getAllGamerGames(gamer);
 
-//        List<Gamer> gamerlist =  gamers;
-////        Gamer gamerRes = null;
-//        for (Gamer gamer: gamers
-//             ) {
-//            if (gamer.getName().equals(gamer)){
-//                gamerRes = gamer;
-//            }
-//        }
+        gamerRepo.getAllGamerGamesWithCategories(gamer);
 
+        model.addAttribute("gcm", gamer.getAllGamesWithCategories());
         model.addAttribute("games", gamer.getAllGames());
         model.addAttribute("gamer", gamer);
 

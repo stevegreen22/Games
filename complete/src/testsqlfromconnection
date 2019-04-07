@@ -1,0 +1,93 @@
+SELECT
+    gamer_game_category.gamerid,
+    gamer_game_category.gameid,
+    gamer.name as gamer_name,
+    game.name as game_name
+FROM gamer_game_category
+    inner JOIN gamer
+        ON gamer.id = gamer_game_category.gamerid
+    inner JOIN game
+        ON game.id = gamer_game_category.gameid
+WHERE
+    gamer_game_category.categoryid=1
+    AND
+    gamer.name like 'steve'
+order by
+    game.name asc;
+
+
+--List of games matching user id, and not caring about category.
+SELECT
+    game.name as game_name
+FROM gamer_game_category
+    inner JOIN gamer
+        ON gamer.id = gamer_game_category.gamerid
+    inner JOIN game
+        ON game.id = gamer_game_category.gameid
+WHERE
+    gamer.id =1
+order by
+    game.name asc;
+
+
+--With category information
+SELECT
+    game.name as game_name, game.id, gamer.id, gamer_game_category.categoryid, category.value, category.name
+FROM gamer_game_category
+    inner JOIN gamer
+        ON gamer.id = gamer_game_category.gamerid
+    inner JOIN game
+        ON game.id = gamer_game_category.gameid
+    inner join `Category`
+        on categoryid = `Category`.id
+WHERE
+    gamer.id =1
+order by
+    game.name desc;
+
+
+SELECT
+     game.id,game.name as game_name, gamer_game_category.categoryid, category.name
+FROM gamer_game_category
+    inner JOIN gamer
+        ON gamer.id = gamer_game_category.gamerid
+    inner JOIN game
+        ON game.id = gamer_game_category.gameid
+    inner join `Category`
+        on categoryid = `Category`.id
+WHERE
+    gamer.id =2
+order by
+    category.value desc, game.name asc;
+
+
+Query query = em.createQuery(
+"SELECT DISTINCT e FROM Employee e INNER JOIN e.tasks t where t.supervisor = e.name");
+
+SELECT game.name FROM gamer_game_category
+inner JOIN gamer ON gamer.id = gamer_game_category.gamerid
+inner JOIN game ON game.id = gamer_game_category.gameid
+WHERE gamer.id =1 order by game.name asc;
+
+select * from gamer;
+SELECT * FROM gamer_game_category
+
+
+Create Table gaming_group(
+id integer not null auto_increment,
+name varchar(100) not null,
+constraint pk primary key(id));
+
+select * from gaming_group;
+insert into gaming_group(name) values ('Test Gaming Group ')
+
+
+Create Table gaming_group_members(
+groupid integer not null,
+gamerid integer not null,
+constraint pk primary key(groupid, gamerid));
+
+select * from gaming_group_members
+
+insert into gaming_group_members (groupid, gamerid) values (1, 1);
+

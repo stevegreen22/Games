@@ -28,6 +28,7 @@ public class Game {
     @Transient
     private int ownerId;
 
+
     public Game(String name) {
         this.name = name;
     }

@@ -1,14 +1,14 @@
 package gametest.models;
 
 import com.omertron.bgg.model.UserInfo;
+import gametest.enums.ACTIVE;
+import gametest.enums.CATEGORY;
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 @Entity
 @Builder(toBuilder = true)
@@ -24,27 +24,41 @@ public class Gamer {
     private Long id;
     private String name;
 
+    public ACTIVE getState() {
+        return state;
+    }
+
+    public void setState(ACTIVE state) {
+        this.state = state;
+    }
+
+    //todo: add Active State in
+    @Column(name = "active")
+    private ACTIVE state; //ACTIVE.Active; //defaulted
+
     @Transient private List<Game>allGames = new ArrayList<>();
     @Transient private List<Game>excited = new ArrayList<>();
     @Transient private List<Game>wants = new ArrayList<>();
     @Transient private List<Game>likes = new ArrayList<>();
-    @Transient private List<Game>fuckno = new ArrayList<>();
-    @Transient private final String prefix_win = "C:\\Users\\Steve\\Downloads\\gs-spring-boot-master\\gs-spring-boot-master\\complete\\src\\main\\";
-    @Transient private final String prefix_mac = "/Users/SteveGreen/Downloads/gameapp/Games/complete/src/main/resources/tempgamelists/";
+    @Transient private List<Game>lolnope = new ArrayList<>();
     @Transient private UserInfo bggUserinfo = null;
 
+    public Map<Game, CATEGORY> getAllGamesWithCategories() {
+        return allGamesWithCategories;
+    }
+
+    public void setAllGamesWithCategories(Map<Game, CATEGORY> allGamesWithCategories) {
+        this.allGamesWithCategories = allGamesWithCategories;
+    }
+
+    @Transient private Map<Game, CATEGORY> allGamesWithCategories = new HashMap<>();
 
     public Gamer(String name){
+
         this.name = name;
-        //CreateGamingLists(); can no obtain from db
+        this.state = ACTIVE.Active;
     }
 
-    public void CreateGamingLists() {
-        CreateExcited(prefix_mac + this.name+"_excited");
-        CreateWants(prefix_mac + this.name+"_wants");
-        CreateLikes(prefix_mac + this.name+"_likes");
-        CreateFuckNo(prefix_mac + this.name+"_fuckno");
-    }
 
     public Long getId() { return id; }
 
@@ -85,12 +99,12 @@ public class Gamer {
         this.likes = likes;
     }
 
-    public List<Game> getFuckno() {
-        return fuckno;
+    public List<Game> getLolnope() {
+        return lolnope;
     }
 
-    public void setFuckno(List<Game> fuckno) {
-        this.fuckno = fuckno;
+    public void setLolnope(List<Game> lolnope) {
+        this.lolnope = lolnope;
     }
 
     public String getName() {
@@ -101,6 +115,10 @@ public class Gamer {
         this.name = name;
     }
 
+
+    //Deprecated, no longer in use unless a list is required via a file.
+    @Transient private final String prefix_win = "C:\\Users\\Steve\\Downloads\\gs-spring-boot-master\\gs-spring-boot-master\\complete\\src\\main\\";
+    @Transient private final String prefix_mac = "/Users/SteveGreen/Downloads/gameapp/Games/complete/src/main/resources/tempgamelists/";
     private void CreateExcited(String s) {
         UpdateList(s, excited);
     }
@@ -111,7 +129,14 @@ public class Gamer {
         UpdateList(s, likes);
     }
     private void CreateFuckNo(String s) {
-        UpdateList(s, fuckno);
+        UpdateList(s, lolnope);
+    }
+
+    public void CreateGamingLists() {
+        CreateExcited(prefix_mac + this.name+"_excited");
+        CreateWants(prefix_mac + this.name+"_wants");
+        CreateLikes(prefix_mac + this.name+"_likes");
+        CreateFuckNo(prefix_mac + this.name+"_fuckno");
     }
 
     private void UpdateList(String filename, List<Game>list){

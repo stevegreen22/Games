@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by SteveGreen on 06/04/2019.
  */
-public class GameSession {
+public class GamingSession {
 
     private List<Gamer> gamersPresent;
     private List<Game> potentialGames;

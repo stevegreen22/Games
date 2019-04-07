@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Gamers!</title>
+
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">fatcatgaming.co.uk</a>
+</nav>
+
+<main role="main" class="container">
+
+    <div class="starter-template">
+        <h4>Gaming Groups</h4>
+    </div>
+
+    <!--<li th:each="key: ${gcm.keySet()}">-->
+    <!--<span th:text="${key.getName()}"></span> :::-->
+    <!--<span th:text="${gcm.get(key).name()}"></span>-->
+    <!--</li>-->
+
+
+    <!--<ul>-->
+        <!--<li th:each="entry: ${gcm}">-->
+            <!--<span th:text="${entry.key.getName()}"></span> = <span th:text="${entry.value}"></span>-->
+        <!--</li>-->
+    <!--</ul>-->
+
+
+    <span>All groups</span>
+    <ol>
+        <li th:each="group : ${gaming_groups}" th:text="${group.name}"></li>
+    </ol>
+
+    <!--<span>All groups and their members</span>-->
+    <!--<ol>-->
+        <!--<li th:each="group : ${gaming_groups}" th:text="${group.getName()}"></li>-->
+        <!--<li th:each="gamer : ${group.getAllGroupMembers()}" th:text="${gamer.getName()}"></li>-->
+    <!--</ol>-->
+
+    <table>
+    <ol th:each="group : ${gaming_groups}">
+            <li th:text="${group.name}"></li>
+            <li th:each="gamer: ${group.allGroupMembers}">
+                <p th:text="${gamer.name}"></p>
+            </li>
+    </ol>
+    </table>
+
+
+    <span>All groups and their Active members</span>
+    <ol>
+        <li th:each="group : ${gaming_groups}" th:text="${group.getName()}"></li>
+    </ol>
+
+    <span>All groups and their inactive members</span>
+    <ol>
+        <li th:each="group : ${gaming_groups}" th:text="${group.getName()}"></li>
+    </ol>
+
+
+</main>
+<!-- /.container -->
+
+<script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+</body>
+</html>

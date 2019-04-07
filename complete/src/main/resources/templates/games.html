@@ -20,11 +20,25 @@
 <main role="main" class="container">
 
     <div class="starter-template">
-        <!--<h1>Gamers</h1>-->
+        <h4>Your Games and their categories</h4>
     </div>
 
+
+    <li th:each="key: ${gcm.keySet()}">
+    <span th:text="${key.getName()}"></span> :::
+    <span th:text="${gcm.get(key).name()}"></span>
+    </li>
+
+
+    <ul>
+        <li th:each="entry: ${gcm}">
+            <span th:text="${entry.key.getName()}"></span> = <span th:text="${entry.value}"></span>
+        </li>
+    </ul>
+
+
     <ol>
-        <li th:each="game : ${games}" th:text="${game.name}"></li>
+        <li th:each="game : ${gamer.getAllGames()}" th:text="${game.name}"></li>
     </ol>
 
     <span>Excited</span>
@@ -32,11 +46,22 @@
         <li th:each="game : ${gamer.getExcited()}" th:text="${game.name}"></li>
     </ol>
 
-
     <span>Wants</span>
 
     <ol>
         <li th:each="game : ${gamer.getWants()}" th:text="${game.name}"></li>
+    </ol>
+
+    <span>Likes</span>
+
+    <ol>
+        <li th:each="game : ${gamer.getLikes()}" th:text="${game.name}"></li>
+    </ol>
+
+    <span>No Chance</span>
+
+    <ol>
+        <li th:each="game : ${gamer.getLolnope()}" th:text="${game.name}"></li>
     </ol>
 
 </main>
