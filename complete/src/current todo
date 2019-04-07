@@ -1,0 +1,37 @@
+-- updating the pages
+display category lists in the user page
+
+-- Create pages
+create page showing all games currently as an option
+create category page showing games and their repecitve categories marked by who
+
+-- Create classes
+create a 'gaming group', this can limit queries and the like
+create a 'gaming session', this will help choose the game
+
+-- New features
+Add game to gamer's collection of games
+Edit that game and place into category
+View games available in gaming group, add a game to your category of preference
+Create wishlist for each gamer for game to own
+
+-- updating classes, db
+indicate the owner of each game, will also help when choosing, or multiple owners!
+add BGG info to each Gamer
+add BGG info to each Game - min/max player etc
+
+-- HTML
+Make it pretty - eugh
+
+-- login / security / etc
+Add login page / details
+link to BBG, or obtain info from BGG
+login checks and the like for viewing a list (or do we care?) preferences can be public, editing can not be.
+
+-- tests
+sigh
+
+-- Deployment (do it proper)
+Use Google Cloud Services
+Use Docker, if possible
+Use Jenkins
