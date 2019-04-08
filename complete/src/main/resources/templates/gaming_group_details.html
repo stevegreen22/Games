@@ -20,7 +20,7 @@
 <main role="main" class="container">
 
     <div class="starter-template">
-        <h2>Gaming Groups</h2>
+        <h2>Group Details</h2>
     </div>
 
     <!--<li th:each="key: ${gcm.keySet()}">-->
@@ -36,10 +36,8 @@
     <!--</ul>-->
 
 
-    <h3>All groups</h3>
-    <ol>
-        <li th:each="group : ${gaming_groups}" th:text="${group.name}"></li>
-    </ol>
+    <h3>Name: </h3>
+    <span th:text="${gaming_group.name}"></span>
 
     <li th:each="group : ${gaming_groups}">
         <span th:text="${group.name}"></span>

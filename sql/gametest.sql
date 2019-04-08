@@ -1,16 +1,13 @@
-
-select * from Gamer where name like "Steve";
+insert into Gamer_game_category(gamerid, gameid, categoryid) values (1, 5, 1);
+insert into Gamer_game_category(gamerid, gameid, categoryid) values (1, 6, 1);
 
 select * from gamer;
 select * from game;
-insert into game(id, name) values (5, "Hellas");
-insert into game(id, name) values(6, "GWT");
 select * from Excited;
-insert into Excited(id, gamer, game) values(5, 1, 5);
-insert into Excited(id, gamer, game) values(6, 1, 6);
+select * from category;
+select * from Gamer_game_category;
 
 
-select game from Excited
-Inner join
-(select id as gamerid from Gamer where name like "steve") as gamerid
-on Excited.gamer = gamerid;
+
+
+alter table gming_group add constraint uniquegamerid Unique(gamerid)

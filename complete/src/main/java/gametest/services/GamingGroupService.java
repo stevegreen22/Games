@@ -15,6 +15,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * Created by SteveGreen on 07/04/2019.
@@ -93,12 +94,26 @@ public class GamingGroupService implements GamingGroupRepo {
         System.out.println("List of gamers in the group: " + gamersInGroup.toString());
 
         for (Gamer g : gamersInGroup) {
-            System.out.println("Gamer "+ g.getName());
+            System.out.println("Gamer and their Active status: "
+                    + g.getName() + " : "
+                    + g.getState());
         }
 
         return gamersInGroup;
     }
 
 
+    public GamingGroup getGamingGroupById(Long groupId) {
+        Optional<GamingGroup> group = jpaGamingGroupRepo.findById(groupId);
+        //throw an exception / display message etc.
+        return group.orElse(null);
 
+//        if(group.isPresent()) {
+//            return group.get();
+//        } else {
+//            //throw an exception / display message etc.
+//            return null;
+//        }
+//
+    }
 }

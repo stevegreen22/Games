@@ -6,7 +6,7 @@ package gametest.enums;
 public enum ACTIVE {
 
     Active(0),
-    Inactive(-10);
+    Inactive(1);
 
     private final int stateIdentifier;
 

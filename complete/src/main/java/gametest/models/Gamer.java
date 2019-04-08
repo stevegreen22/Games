@@ -24,6 +24,7 @@ public class Gamer {
     private Long id;
     private String name;
 
+    @Enumerated
     public ACTIVE getState() {
         return state;
     }

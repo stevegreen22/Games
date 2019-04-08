@@ -1,17 +1,15 @@
--- updating the pages
-
 
 -- Methods / classes / etc
-Add methods for adding/ removing from the categty lists
+Add methods for adding/ removing from the category lists
 sorting them?  treemap?  treeset even?
 Swap games into a different category
 makeChangeMemberActiveState
 
 -- Create pages
-Create gaming group page
-    - add your self to the group. (requires some sort of login though)
+
+add your self to a group. (requires some sort of login though)
 create page showing all games currently as an option within a gaming group
-create category page showing games and their repecitve categories marked by who
+create category page showing games and their repective categories marked by who
 
 -- Create classes
 **create a 'gaming group', this can limit queries and the like
@@ -33,6 +31,7 @@ indicate the owner of each game, will also help when choosing, or multiple owner
 add BGG info to each Gamer
 add BGG info to each Game - min/max player etc
 add unique constraints where necceary
+scripts to create tables and the like
 
 -- Excpetions
 add them.
@@ -49,10 +48,11 @@ login checks and the like for viewing a list (or do we care?) preferences can be
 sigh
 
 -- Deployment (do it proper)
-Use Google Cloud Services
+Use Google Cloud Services - started to set up the SQL server
 Use Docker, if possible
 Use Jenkins
 
 
 -- Done
 **display category lists in the user page
+**Create gaming group page
