@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,15 @@ public class HelloController {
     public String homepage() {
         return "welcome";
     }
+
+    @RequestMapping("/templateTest")
+    public String testBootStrapTemplate(){
+        return "home"; }
+
+    @RequestMapping("/fragmentTest")
+    public String testFragments(Model model){
+        model.addAttribute("metaTitle", "MYSUPERPAGETITLE");
+        return "fragmentTest"; }
 
     @RequestMapping("/allGames")
     public String homepageds(Model model) {
