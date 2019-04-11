@@ -1,72 +1,206 @@
-<!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <title>Gamers!</title>
-
-    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" th:href="@{/css/main.css}"/>
-
-</head>
-
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layouts/default">
 <body>
 
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">fatcatgaming.co.uk</a>
-</nav>
-
-<main role="main" class="container">
-
-    <div class="starter-template">
-        <h4>Your Games and their categories</h4>
+<div id="page" layout:fragment="content">
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
     </div>
 
+    <!-- Header section -->
+    <header class="header-section">
+        <div class="header-warp">
+            <div class="header-social d-flex justify-content-end">
+                <p>Follow us:</p>
+                <a href="#"><i class="fa fa-pinterest"></i></a>
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-dribbble"></i></a>
+                <a href="#"><i class="fa fa-behance"></i></a>
+            </div>
+            <div class="header-bar-warp d-flex">
+                <!-- site logo -->
+                <a href="home.html" class="site-logo">
+                    <img th:src="@{/img/logo.png}" alt="">
+                </a>
+                <nav class="top-nav-area w-100">
+                    <div class="user-panel">
+                        <a href="">Login</a> / <a href="">Register</a>
+                    </div>
+                    <!-- Menu -->
+                    <ul class="main-menu primary-menu">
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="games.html">Games</a>
+                            <ul class="sub-menu">
+                                <li><a href="game-single.html">Game Singel</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="review.html">Reviews</a></li>
+                        <li><a href="blog.html">News</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!-- Header section end -->
 
-    <li th:each="key: ${gcm.keySet()}">
-    <span th:text="${key.getName()}"></span> :::
-    <span th:text="${gcm.get(key).name()}"></span>
-    </li>
+    <!-- Page top section -->
+    <section class="page-top-section set-bg" th:data-setbg="@{/img/page-top-bg/2.jpg}">
+        <div class="page-info">
+            <h2>Gamers</h2>
+            <div class="site-breadcrumb">
+                <a href="">Home</a>  / <a href="">Gamers</a> /
+                <!--may need to escape the '-->
+                <span th:text="${gamer.name} + '\'s Games'"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games section -->
+    <section class="games-section">
+        <div class="container">
+            <ul class="game-filter">
+                <li><a href="">A</a></li>
+                <li><a href="">B</a></li>
+                <li><a href="">C</a></li>
+                <li><a href="">D</a></li>
+                <li><a href="">E</a></li>
+                <li><a href="">F</a></li>
+                <li><a href="">G</a></li>
+                <li><a href="">H</a></li>
+                <li><a href="">I</a></li>
+                <li><a href="">J</a></li>
+                <li><a href="">K</a></li>
+                <li><a href="">L</a></li>
+                <li><a href="">M</a></li>
+                <li><a href="">N</a></li>
+                <li><a href="">O</a></li>
+                <li><a href="">P</a></li>
+                <li><a href="">Q</a></li>
+                <li><a href="">R</a></li>
+                <li><a href="">S</a></li>
+                <li><a href="">T</a></li>
+                <li><a href="">U</a></li>
+                <li><a href="">V</a></li>
+                <li><a href="">W</a></li>
+                <li><a href="">X</a></li>
+                <li><a href="">Y</a></li>
+                <li><a href="">Z</a></li>
+            </ul>
+
+            <!--<li th:each="key: ${gcm.keySet()}">-->
+                <!--<span th:text="${key.getName()}"></span> :::-->
+                <!--<span th:text="${gcm.get(key).name()}"></span>-->
+            <!--</li>-->
+
+            <!--<ul>-->
+                <!--<li th:each="entry: ${gcm}">-->
+                    <!--<span th:text="${entry.key.getName()}"></span> = <span th:text="${entry.value}"></span>-->
+                <!--</li>-->
+            <!--</ul>-->
+
+            <div class="row">
+                <div class="col-xl-9 col-md-8 col-md-9">
+
+                    <th:block th:with="partitions=${T(org.apache.commons.collections4.ListUtils).partition(gamer.wants, 5)}">
+                        <div class="row" th:each="partition: ${partitions}">
+                            <div class="col-lg-2 col-md-6" th:each="game: ${partition}">
+                                <div class="game-item">
+                                    <img th:src="@{/img/games/1.jpg}" alt="#">
+                                    <h5 th:text="${game.name}"></h5>
+                                    <a href="game-single.html" class="read-more">Read More  <img th:src="@{/img/icons/double-arrow.png}" alt="#"/></a>
+                                </div>
+                            </div>
+                        </div>
+                    </th:block>
 
 
-    <ul>
-        <li th:each="entry: ${gcm}">
-            <span th:text="${entry.key.getName()}"></span> = <span th:text="${entry.value}"></span>
-        </li>
-    </ul>
+                    <div class="site-pagination">
+                        <a href="#" class="active">01.</a>
+                        <a href="#">02.</a>
+                        <a href="#">03.</a>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-4 col-md-3 sidebar game-page-sideber">
+                    <div id="stickySidebar">
+                        <div class="widget-item">
+                            <div class="categories-widget">
+                                <h4 class="widget-title">categories</h4>
+                                <ul>
+                                    <li><a th:href="@{/gamer/{gamerid}/games/excited (gamerid=${gamer.id}) }">Excited</a></li>
+                                    <!--<li><a th:href="@{/{gamerid}/games/wants (gamerid=${gamer.getId()}) }">Wants</a></li>-->
+                                    <!--<li><a th:href="@{/{gamerid}/games/likes (gamerid=${gamer.getId()}) }">Likes</a></li>-->
+                                    <!--<li><a th:href="@{/{gamerid}/games/lolnope (gamerid=${gamer.getId()}) }">LolNope</a></li>-->
+                                    <!--<li><a href="">Uncategorised</a></li>-->
+
+                                    <li><form ACTION="#" th:action="@{/gamer/games/excited}" th:object="${gamer}" th:method="POST">
+                                        <input th:type="hidden" th:field="*{name}"/>
+                                        <!-- ADD ALL THE OTHER FIELDS THAT ARE PART OF THE OBJECT -->
+                                        <!--<button type="submit">Submit</button>-->
+                                        <button type="submit" class="btn btn-link">Excited</button>
+                                    </form>
+                                    </li>
 
 
-    <ol>
-        <li th:each="game : ${gamer.getAllGames()}" th:text="${game.name}"></li>
-    </ol>
+                                </ul>
+                            </div>
 
-    <span>Excited</span>
-    <ol>
-        <li th:each="game : ${gamer.getExcited()}" th:text="${game.name}"></li>
-    </ol>
+                            <!--<a href="games.html" th:href="@{/{gamerid}/games (gamerid=${gamer.getId()}) }"-->
+                               <!--class="read-more">View Games<img th:src="@{/img/icons/double-arrow.png}" alt="#"/></a>-->
 
-    <span>Wants</span>
+                        </div>
+                        <div class="widget-item">
+                            <div class="categories-widget">
+                                <h4 class="widget-title">Genre</h4>
+                                <ul>
+                                    <li><a href="">Co-op</a></li>
+                                    <li><a href="">Solo</a></li>
+                                    <li><a href="">Euro</a></li>
+                                    <li><a href="">Strategy</a></li>
+                                    <li><a href="">Family</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Games end-->
 
-    <ol>
-        <li th:each="game : ${gamer.getWants()}" th:text="${game.name}"></li>
-    </ol>
+    <!-- Featured section -->
+    <section class="featured-section">
+        <div class="featured-bg set-bg" th:data-setbg="@{/img/featured-bg.jpg}"></div>
+        <div class="featured-box">
+            <div class="text-box">
+                <div class="top-meta">11.11.18  /  in <a href="">Games</a></div>
+                <h3>The game you’ve been waiting  for is out now</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquamet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vestibulum posuere porttitor justo id pellentesque. Proin id lacus feugiat, posuere erat sit amet, commodo ipsum. Donec pellentesque vestibulum metus...</p>
+                <a href="#" class="read-more">Read More <img th:src="@{/img/icons/double-arrow.png}" alt="#"/></a>
+            </div>
+        </div>
+    </section>
+    <!-- Featured section end-->
 
-    <span>Likes</span>
+    <!--Todo: Turn this into a fragment, along wiht the nav to save faff.-->
+    <!-- Newsletter section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <h2>Subscribe to our newsletter</h2>
+            <form class="newsletter-form">
+                <input type="text" placeholder="ENTER YOUR E-MAIL">
+                <button class="site-btn">subscribe  <img th:src="@{/img/icons/double-arrow.png}" alt="#"/></button>
+            </form>
+        </div>
+    </section>
+    <!-- Newsletter section end -->
 
-    <ol>
-        <li th:each="game : ${gamer.getLikes()}" th:text="${game.name}"></li>
-    </ol>
 
-    <span>No Chance</span>
-
-    <ol>
-        <li th:each="game : ${gamer.getLolnope()}" th:text="${game.name}"></li>
-    </ol>
-
-</main>
-<!-- /.container -->
-
-<script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+</div>
 </body>
 </html>

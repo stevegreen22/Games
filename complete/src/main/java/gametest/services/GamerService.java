@@ -5,7 +5,6 @@ import gametest.models.Game;
 import gametest.models.Gamer;
 import gametest.repo.GameRepo;
 import gametest.repo.GamerRepo;
-import gametest.repo.JpaGameRepo;
 import gametest.repo.JpaGamerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Created by SteveGreen on 06/04/2019.
@@ -82,20 +83,25 @@ public class GamerService implements GamerRepo {
         List<Game> wa = new ArrayList<>() ;
         List<Game> li = new ArrayList<>() ;
         List<Game> lo = new ArrayList<>() ;
+        List<Game> al = new ArrayList<>() ;
 
         in.forEach((k,v) -> {
             switch (v) {
                 case Excited:
                     ex.add(k);  //todo: add a gamer.addgame(listtoaddto)
+                    al.add(k);
                     break;
                 case Want:
                     wa.add(k);
+                    al.add(k);
                     break;
                 case Like:
                     li.add(k);
+                    al.add(k);
                     break;
                 case Lolnope:
                     lo.add(k);
+                    al.add(k);
                     break;
             }
         });
@@ -104,6 +110,13 @@ public class GamerService implements GamerRepo {
         gamer.setWants(wa);
         gamer.setLikes(li);
         gamer.setLolnope(lo);
+        gamer.setAllGames(al);
+
+//        List<Game> combinedList = Stream.of(ex, wa, li, lo)
+//                .flatMap(x -> x.stream())
+//                .collect(Collectors.toList());
+//
+//        gamer.setAllGames(combinedList);
 
 
     }

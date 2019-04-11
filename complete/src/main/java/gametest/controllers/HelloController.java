@@ -33,7 +33,7 @@ public class HelloController {
     @RequestMapping("/fragmentTest")
     public String testFragments(Model model){
         model.addAttribute("metaTitle", "MYSUPERPAGETITLE");
-        return "fragmentTest"; }
+        return "fragmentTemplate"; }
 
     @RequestMapping("/allGames")
     public String homepageds(Model model) {
@@ -42,64 +42,12 @@ public class HelloController {
         games.add(new Game("dsfsdf"));
 
         model.addAttribute("games", games);
-        System.out.println("FDLHGFLJDSFLSDGHLJF");
         return "games";
     }
+
     @RequestMapping("/allCategories")
     public String homepagesd() {
         return "welcome";
-    }
-
-//    @RequestMapping("/allRegisteredGamers")
-//    public String index(Model model) {
-//
-//        List<Gamer>gamers = jpaGamerRepo.findAll();
-//
-////        List<Game> games = new ArrayList<>();
-////        try {
-////            Scanner scan = new Scanner(new File("C:\\Users\\Steve\\Downloads\\gs-spring-boot-master\\gs-spring-boot-master\\complete\\src\\main\\gameslist"));
-////            while (scan.hasNextLine()) {
-////                games.add(new Game(scan.nextLine()));
-////            }
-////            scan.close();
-////        } catch (FileNotFoundException e) {
-////            e.printStackTrace();
-////        }
-////        JpaGamerRepo pr = new JpaGamerRepo();
-////        Gamer steve = pr.getPersonByName(gamers, "Jerkwood");
-//
-//        //gamers.forEach((k,v) -> jpaGamerRepo.save(v));
-//
-//        model.addAttribute("gamers", gamers);
-//        return "gamers";
-//    }
-
-
-
-    @RequestMapping("/test")
-    public String main(Model model) {
-        Gamer steve = new Gamer("Steve");
-
-        //model.addAttribute("message", "a mesage");
-
-        BggApi bggApi = new BggApi();
-        UserInfo user = null;
-        try {
-           user =  bggApi.getUserInfo("fatcatgaming");
-        } catch (BggException e) {
-            e.printStackTrace();
-        }
-
-        steve.setBggUserinfo(user);
-
-        List<String> tasks = new ArrayList<>();
-        for (Game game: steve.getExcited()
-             ) {
-            tasks.add(game.getName());
-        }
-        model.addAttribute("tasks", steve.getBggUserinfo());
-
-        return "gamers"; //view
     }
 
 

@@ -1145,14 +1145,14 @@ ol {
 }
 
 .game-item {
-	margin-bottom: 80px;
+	margin-bottom: 40px;
 }
 
 .game-item h5 {
-	font-size: 20px;
+	font-size: 14px;
 	color: #fff;
-	padding-top: 30px;
-	margin-bottom: 20px;
+	padding-top: 10px;
+	margin-bottom: 10px;
 }
 
 .game-item .read-more {
@@ -1380,7 +1380,7 @@ ol {
 ---------------------*/
 
 .review-item {
-	margin-bottom: 87px;
+	margin-bottom: 40px;
 }
 
 .review-content {
@@ -1389,11 +1389,11 @@ ol {
 
 .review-content h3 {
 	max-width: 100%;
-	margin-bottom: 35px;
+	margin-bottom: 5px;
 }
 
 .review-content p {
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 }
 
 .review-content .rating {
