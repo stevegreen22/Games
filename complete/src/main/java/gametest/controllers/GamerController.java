@@ -53,49 +53,89 @@ public class GamerController {
 
         gamerService.getAllGamerGamesWithCategories(gamer);
 
-
         //todo:  getAlGames is empty...
         System.out.println("ALL SIZE"+gamer.getAllGames().size());
 
         model.addAttribute("metaTitle", gamer.getName() +"'s Games");
         model.addAttribute("gcm", gamer.getAllGamesWithCategories()); //can remove.
         model.addAttribute("gamer", gamer);
+        model.addAttribute("games", gamer.getAllGames());
 
         return "games";
     }
-
-    //todo: don't think this is the best approach.
-//    <li><a th:href="@{/gamer/{gamerid}/games/excited (gamerid=${gamer.getId()}) }">Excited</a></li>
-//    <li><a th:href="@{/{gamerid}/games/wants (gamerid=${gamer.getId()}) }">Wants</a></li>
-//    <li><a th:href="@{/{gamerid}/games/likes (gamerid=${gamer.getId()}) }">Likes</a></li>
-//    <li><a th:href="@{/{gamerid}/games/lolnope (gamerid=${gamer.getId()}) }">LolNope</a></li>
 
 
     @RequestMapping("/gamer/{gamerid}/games/excited")
     public String getExcited(@PathVariable final Long gamerid, Model model){
 
-        Gamer gamer = gamerService.getGamerById(gamerid);
-        gamerService.getAllGamerGamesWithCategories(gamer); //not yet implemented
+        addGamerListAttributes(model, gamerid, "EXC");
+        return "games";
+    }
 
-        model.addAttribute("metaTitle", gamer.getName() +"'s Games");
-        model.addAttribute("games", gamer.getExcited());
-        model.addAttribute("gamer", gamer);
+    @RequestMapping("/gamer/{gamerid}/games/wants")
+    public String getWants(@PathVariable final Long gamerid, Model model){
+
+        addGamerListAttributes(model, gamerid, "WAN");
+        return "games";
+    }
+
+    @RequestMapping("/gamer/{gamerid}/games/likes")
+    public String getLikes(@PathVariable final Long gamerid, Model model){
+
+        addGamerListAttributes(model, gamerid, "LIK");
+        return "games";
+    }
+
+    @RequestMapping("/gamer/{gamerid}/games/lolnope")
+    public String getLolnope(@PathVariable final Long gamerid, Model model){
+
+        addGamerListAttributes(model, gamerid, "LOL");
         return "games";
     }
 
 
-    @RequestMapping("/gamer/games/excited")
-    public String userGamesExcited(@ModelAttribute final Gamer gamer, Model model){
 
-        System.out.println("ALL SIZE with model attr"+gamer.getAllGames().size());
+    private Gamer getGamerForModel(Long gamerId) {
+        Gamer gamer = gamerService.getGamerById(gamerId);
+        gamerService.getAllGamerGamesWithCategories(gamer);
+        return gamer;
+    }
 
-        System.out.println(gamer.getName() + gamer.getId());
+    private void addGamerListAttributes(Model model, Long gamerId, String type){
+        Gamer gamer = getGamerForModel(gamerId);
+
+        switch (type) {
+            case "ALL" :
+                model.addAttribute("games", gamer.getAllGames());
+                break;
+            case "EXC" :
+                model.addAttribute("games", gamer.getExcited());
+                break;
+            case "WAN" :
+                model.addAttribute("games", gamer.getWants());
+                break;
+            case "LIK" :
+                model.addAttribute("games", gamer.getLikes());
+                break;
+            case "LOL" :
+                model.addAttribute("games", gamer.getLolnope());
+                break;
+            default :
+                model.addAttribute("games", gamer.getAllGames());
+                break;
+        }
 
         model.addAttribute("metaTitle", gamer.getName() +"'s Games");
-        model.addAttribute("games", gamer.getExcited());
+        model.addAttribute("gamer", gamer);
+    }
+
+
+    private void addAttributes(Model model, Long gamerId){
+        Gamer gamer = getGamerForModel(gamerId);
+
+        model.addAttribute("metaTitle", gamer.getName() +"'s Games");
         model.addAttribute("gamer", gamer);
 
-        return "games";
     }
 
 

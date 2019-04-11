@@ -7,6 +7,7 @@ import gametest.repo.GameRepo;
 import gametest.repo.GamerRepo;
 import gametest.repo.JpaGamerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -16,8 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
 
 /**
  * Created by SteveGreen on 06/04/2019.
@@ -46,6 +46,7 @@ public class GamerService implements GamerRepo {
     // Return all gamers within a gaming group that are signed up to a gaming session.
 
     @Override
+    @Cacheable("gamers")
     public Gamer getGamerById(Long gamerid) {
 
         Optional<Gamer> gamer = jpaGamerRepo.findById(gamerid);
@@ -123,7 +124,7 @@ public class GamerService implements GamerRepo {
 
     private void getAllGamersEntityManagerTest(Gamer gamer) {
 
-        Query q = entityManager.createNativeQuery("SELECT a.name, a.id FROM Gamer a", Gamer.class);
+        Query q = entityManager.createNativeQuery("SELECT a.name, a.id FROM gamer a", Gamer.class);
         List<Gamer> gamers = q.getResultList();
 
         System.out.println("lList of gamers?" + q.getResultList().toString());

@@ -102,8 +102,8 @@ public class GameService implements GameRepo {
                         "ON gamer.id = gamer_game_category.gamerid " +
                         "INNER JOIN game " +
                         "ON game.id = gamer_game_category.gameid " +
-                        "INNER JOIN Category " +
-                        "ON categoryid = Category.id " +
+                        "INNER JOIN category " +
+                        "ON categoryid = category.id " +
                         "WHERE " +
                         "gamer.id = ? " +
                         "order by " +

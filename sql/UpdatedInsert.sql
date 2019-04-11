@@ -1,3 +1,61 @@
+insert into category(id, name, value) values (1, "Excited", 5);
+insert into category(id, name, value) values (2, "Want", 3);
+insert into category(id, name, value) values (3, "Like", 2);
+insert into category(id, name, value) values (4, "lolnope", -4);
+
+insert into gaming_group(name) values ('Test Gaming Group ');
+insert into gaming_group(name) values ('Some Group name ');
+
+insert into gaming_group_members(groupid, gamerid) values (1, 1);
+insert into gaming_group_members(groupid, gamerid) values (1, 2);
+insert into gaming_group_members(groupid, gamerid) values (2, 1);
+
+insert into game(name) values ("Great Western Trail");
+insert into game(name) values ("Feast for Odin");
+insert into game(name) values ("CO2");
+insert into game(name) values ("T’zolkin");
+insert into game(name) values ("Brass:Birmingham");
+insert into game(name) values ("Teotihuacan");
+insert into game(name) values ("Treasure Island");
+insert into game(name) values ("Scythe");
+insert into game(name) values ("Gears of War");
+insert into game(name) values ("Black Orchestra");
+insert into game(name) values ("Sagrada");
+insert into game(name) values ("Cyclades");
+insert into game(name) values ("Inis");
+insert into game(name) values ("Forbidden stars");
+insert into game(name) values ("Root");
+insert into game(name) values ("T'zolkin");
+insert into game(name) values ("Galaxy Defenders");
+insert into game(name) values ("Arkham Horror 3rd");
+insert into game(name) values ("Descent");
+insert into game(name) values ("Euphoria");
+insert into game(name) values ("Nemesis");
+insert into game(name) values ("Roll Player");
+insert into game(name) values ("Waste Knights");
+insert into game(name) values ("The Others");
+insert into game(name) values ("Rising Sun");
+insert into game(name) values ("Blood Rage");
+insert into game(name) values ("Viticulture");
+insert into game(name) values ("Champions of Midgard");
+insert into game(name) values ("KDM");
+insert into game(name) values ("Terraforming Mars");
+insert into game(name) values ("Wildlands");
+insert into game(name) values ("Gaia Project");
+insert into game(name) values ("Raiders");
+insert into game(name) values ("Shadows Over Normandie");
+insert into game(name) values ("Sword Sorcery");
+insert into game(name) values ("Western Legends");
+insert into game(name) values ("Xia");
+insert into game(name) values ("Wingspan");
+
+insert into gamer(name, active) values ("Steve", 0);
+insert into gamer(name, active) values ("Jerkwood", 1);
+insert into gamer(name, active) values ("Ryan", 1);
+insert into gamer(name, active) values ("Sam", 0);
+insert into gamer(name, active) values ("Mark", 0);
+
+
 insert into gamer_game_category(gamerid, gameid, categoryid) values(4,	7  ,1);
 insert into gamer_game_category(gamerid, gameid, categoryid) values(4,	8  ,1);
 insert into gamer_game_category(gamerid, gameid, categoryid) values(4,	9  ,1);
@@ -81,3 +139,8 @@ insert into gamer_game_category(gamerid, gameid, categoryid) values(2,	30,	4);
 insert into gamer_game_category(gamerid, gameid, categoryid) values(2,	23,	4);
 insert into gamer_game_category(gamerid, gameid, categoryid) values(2,	41,	4);
 insert into gamer_game_category(gamerid, gameid, categoryid) values(2,	35,	4);
+
+
+
+
+

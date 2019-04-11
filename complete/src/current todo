@@ -1,3 +1,6 @@
+uuid for the user id instead of int
+email for user so we cna have a uniwue on table.
+
 
 -- Methods / classes / etc
 Add methods for adding/ removing from the category lists
@@ -56,3 +59,4 @@ Use Jenkins
 -- Done
 **display category lists in the user page
 **Create gaming group page
+**cached annotation to the gamer class to help with repeated calls

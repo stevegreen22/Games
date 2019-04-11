@@ -103,11 +103,10 @@
                     <!--<span th:text="${entry.key.getName()}"></span> = <span th:text="${entry.value}"></span>-->
                 <!--</li>-->
             <!--</ul>-->
-
             <div class="row">
                 <div class="col-xl-9 col-md-8 col-md-9">
 
-                    <th:block th:with="partitions=${T(org.apache.commons.collections4.ListUtils).partition(gamer.wants, 5)}">
+                    <th:block th:with="partitions=${T(org.apache.commons.collections4.ListUtils).partition(games, 5)}">
                         <div class="row" th:each="partition: ${partitions}">
                             <div class="col-lg-2 col-md-6" th:each="game: ${partition}">
                                 <div class="game-item">
@@ -131,20 +130,21 @@
                         <div class="widget-item">
                             <div class="categories-widget">
                                 <h4 class="widget-title">categories</h4>
+
                                 <ul>
                                     <li><a th:href="@{/gamer/{gamerid}/games/excited (gamerid=${gamer.id}) }">Excited</a></li>
-                                    <!--<li><a th:href="@{/{gamerid}/games/wants (gamerid=${gamer.getId()}) }">Wants</a></li>-->
-                                    <!--<li><a th:href="@{/{gamerid}/games/likes (gamerid=${gamer.getId()}) }">Likes</a></li>-->
-                                    <!--<li><a th:href="@{/{gamerid}/games/lolnope (gamerid=${gamer.getId()}) }">LolNope</a></li>-->
+                                    <li><a th:href="@{/gamer/{gamerid}/games/wants (gamerid=${gamer.getId()}) }">Wants</a></li>
+                                    <li><a th:href="@{/gamer/{gamerid}/games/likes (gamerid=${gamer.getId()}) }">Likes</a></li>
+                                    <li><a th:href="@{/gamer/{gamerid}/games/lolnope (gamerid=${gamer.getId()}) }">Lolnope</a></li>
                                     <!--<li><a href="">Uncategorised</a></li>-->
 
-                                    <li><form ACTION="#" th:action="@{/gamer/games/excited}" th:object="${gamer}" th:method="POST">
-                                        <input th:type="hidden" th:field="*{name}"/>
-                                        <!-- ADD ALL THE OTHER FIELDS THAT ARE PART OF THE OBJECT -->
-                                        <!--<button type="submit">Submit</button>-->
-                                        <button type="submit" class="btn btn-link">Excited</button>
-                                    </form>
-                                    </li>
+                                    <!--<li><form ACTION="#" th:action="@{/gamer/games/excited}" th:object="${gamer}" th:method="POST">-->
+                                        <!--<input th:type="hidden" th:field="*{name}"/>-->
+                                        <!--&lt;!&ndash; ADD ALL THE OTHER FIELDS THAT ARE PART OF THE OBJECT &ndash;&gt;-->
+                                        <!--&lt;!&ndash;<button type="submit">Submit</button>&ndash;&gt;-->
+                                        <!--<button type="submit" class="btn btn-link">Excited Form</button>-->
+                                    <!--</form>-->
+                                    <!--</li>-->
 
 
                                 </ul>

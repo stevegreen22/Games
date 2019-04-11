@@ -27,7 +27,7 @@
     </div>
 
     <ol>
-        <li><a href="welcome.html" th:href="@{/allRegisteredGamers}">All registered gamers</a></li>
+        <li><a href="welcome.html" th:href="@{/viewGamers}">All registered gamers</a></li>
         <li><a href="welcome.html" th:href="@{/allCategories}">All categories</a></li>
         <li th:each="task : ${tasks}" th:text="${task.getName()}"></li>
     </ol>
