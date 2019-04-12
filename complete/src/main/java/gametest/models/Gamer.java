@@ -33,7 +33,6 @@ public class Gamer {
         this.state = state;
     }
 
-    //todo: add Active State in
     @Column(name = "active")
     private ACTIVE state; //ACTIVE.Active; //defaulted
 

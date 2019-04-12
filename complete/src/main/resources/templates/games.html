@@ -110,7 +110,7 @@
                         <div class="row" th:each="partition: ${partitions}">
                             <div class="col-lg-2 col-md-6" th:each="game: ${partition}">
                                 <div class="game-item">
-                                    <img th:src="@{/img/games/1.jpg}" alt="#">
+                                    <img th:src="${game.imageString}" alt="#">
                                     <h5 th:text="${game.name}"></h5>
                                     <a href="game-single.html" class="read-more">Read More  <img th:src="@{/img/icons/double-arrow.png}" alt="#"/></a>
                                 </div>

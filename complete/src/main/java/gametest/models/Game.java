@@ -28,6 +28,17 @@ public class Game {
     @Transient
     private int ownerId;
 
+    public String getImageString() {
+        return imageString;
+    }
+
+    public void setImageString(String setImageString) {
+        this.imageString = setImageString;
+    }
+
+    @Transient
+    public String imageString;
+
 
     public Game(String name) {
         this.name = name;

@@ -1,5 +1,10 @@
 package gametest.controllers;
 
+import com.omertron.bgg.BggApi;
+import com.omertron.bgg.BggException;
+import com.omertron.bgg.model.BoardGameExtended;
+import com.omertron.bgg.model.SearchWrapper;
+import gametest.models.Game;
 import gametest.models.Gamer;
 import gametest.repo.GamerRepo;
 import gametest.services.GamerService;
@@ -60,6 +65,24 @@ public class GamerController {
         model.addAttribute("gcm", gamer.getAllGamesWithCategories()); //can remove.
         model.addAttribute("gamer", gamer);
         model.addAttribute("games", gamer.getAllGames());
+
+
+        //Quick/ dirty test before work
+        BggApi bggApi = new BggApi();
+
+        for (Game game: gamer.getLikes()) {
+            try {
+                SearchWrapper result = bggApi.searchBoardGame(game.getName(), false, false);
+                int bggGameId = result.getItems().get(0).getId();
+                List<BoardGameExtended> result2 = bggApi.getBoardGameInfo(bggGameId);
+                for (BoardGameExtended bg : result2) {
+                    game.setImageString(bg.getImage());
+                    System.out.println(bg.getImage());
+                }
+            } catch (BggException e) {
+                e.printStackTrace();
+            }
+        }
 
         return "games";
     }
