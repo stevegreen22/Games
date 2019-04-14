@@ -1,27 +1,24 @@
 package gametest;
 
-import gametest.models.Gamer;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+
 
 @SpringBootApplication
+@EnableAutoConfiguration
 @EnableCaching
-//@ComponentScan({"gametest.repo","gametest.repo.TestRepo"})
 public class Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
-
-    public static Map<String, Gamer> gamers = new HashMap<>();
 
     @Bean
     public CommandLineRunner commandLineRunner(ApplicationContext ctx ) {
