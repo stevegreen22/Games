@@ -1,3 +1,25 @@
+Idea of how to progress....
+
+-Create new Game_details table
+-Have a 1-1 relationship with Game
+-Rename the current Game table as we need to start from fresh
+-User can view collection of games in the Library which are
+    games that have been added to our table / Library.
+-If game is not in the collection, User can search via name on BGG
+-Display search results on a page, obtain image info etc etc.
+-User can then select a game to add to their collection (Excited, Wants, etc)
+    - Save the game image to a temp location
+    - Save the image to the bucket
+    - Create a Game_Details Object that contains the pathing.
+    - Save the game to the Library
+    - Create the DB connection between user, collection and game.
+    - Clean up temp location
+-User views Library, can see game just added
+-User can view game in his collection and category also.
+
+
+
+
 uuid for the user id instead of int
 email for user so we cna have a uniwue on table.
 

@@ -1,7 +1,6 @@
 package gametest.models;
 
 import gametest.enums.ACTIVE;
-import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -13,11 +12,11 @@ import java.util.Map;
  * Created by SteveGreen on 07/04/2019.
  */
 @Entity
-@Builder(toBuilder = true)
-@AllArgsConstructor(access = AccessLevel.PACKAGE)
-@NoArgsConstructor(access = AccessLevel.PACKAGE)
-@Setter(value = AccessLevel.PACKAGE)
-@Getter
+//@Builder(toBuilder = true)
+//@AllArgsConstructor(access = AccessLevel.PACKAGE)
+//@NoArgsConstructor(access = AccessLevel.PACKAGE)
+//@Setter(value = AccessLevel.PACKAGE)
+//@Getter
 @Table(name="gaming_group")
 public class GamingGroup {
 

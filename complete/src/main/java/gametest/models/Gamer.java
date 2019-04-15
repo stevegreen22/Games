@@ -3,7 +3,6 @@ package gametest.models;
 import com.omertron.bgg.model.UserInfo;
 import gametest.enums.ACTIVE;
 import gametest.enums.CATEGORY;
-import lombok.*;
 
 import javax.persistence.*;
 import java.io.File;
@@ -11,11 +10,11 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 @Entity
-@Builder(toBuilder = true)
-@AllArgsConstructor(access = AccessLevel.PACKAGE)
-@NoArgsConstructor(access = AccessLevel.PACKAGE)
-@Setter(value = AccessLevel.PACKAGE)
-@Getter
+//@Builder(toBuilder = true)
+//@AllArgsConstructor(access = AccessLevel.PACKAGE)
+//@NoArgsConstructor(access = AccessLevel.PACKAGE)
+//@Setter(value = AccessLevel.PACKAGE)
+//@Getter
 @Table(name="gamer")
 public class Gamer {
 
@@ -23,6 +22,10 @@ public class Gamer {
     @GeneratedValue
     private Long id;
     private String name;
+
+    public Gamer() {
+
+    }
 
     @Enumerated
     public ACTIVE getState() {

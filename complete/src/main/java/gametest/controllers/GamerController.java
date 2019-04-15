@@ -6,13 +6,18 @@ import com.omertron.bgg.model.BoardGameExtended;
 import com.omertron.bgg.model.SearchWrapper;
 import gametest.gcp_storage.StorageUpload;
 import gametest.models.Game;
+import gametest.models.GameDetails;
 import gametest.models.Gamer;
-import gametest.repo.GamerRepo;
+import gametest.repo.JpaGameDetailsRepo;
+import gametest.repo.JpaGameRepo;
 import gametest.services.GamerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -22,15 +27,42 @@ public class GamerController {
     @Autowired
     private GamerService gamerService;
 
+    //both used for testing the new game test table.
+    @Autowired
+    JpaGameDetailsRepo gameDetailsRepo;
+    @Autowired
+    JpaGameRepo gameRepo;
+
     @RequestMapping("/viewGamers")
     public String viewGamers(Model model) {
 
         List<Gamer> gamers = gamerService.getAllGamers();
 
+        //doStuff();
+
         model.addAttribute("metaTitle", "All Registered Gamers");
         model.addAttribute("gamers", gamers);
         return "gamers";
     }
+
+
+
+    //testing
+    public void doStuff(){
+        Game test = new Game("Great Western Trail_2");
+        GameDetails gameDetails = new GameDetails(
+                12341, 2, 4,
+                "myImageLoc", "myImageName");
+
+        test.setGameDetails(gameDetails);
+        gameDetails.setGame(test);
+
+        gameRepo.save(test);
+
+
+
+    }
+
 
     //test - this is for spring security if/when implemented.
     @RequestMapping(value="gamer/showGames", method = RequestMethod.POST)
