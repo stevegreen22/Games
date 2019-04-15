@@ -4,6 +4,7 @@ import com.omertron.bgg.BggApi;
 import com.omertron.bgg.BggException;
 import com.omertron.bgg.model.BoardGameExtended;
 import com.omertron.bgg.model.SearchWrapper;
+import gametest.gcp_storage.StorageUpload;
 import gametest.models.Game;
 import gametest.models.Gamer;
 import gametest.repo.GamerRepo;
@@ -74,10 +75,23 @@ public class GamerController {
             try {
                 SearchWrapper result = bggApi.searchBoardGame(game.getName(), false, false);
                 int bggGameId = result.getItems().get(0).getId();
+
                 List<BoardGameExtended> result2 = bggApi.getBoardGameInfo(bggGameId);
                 for (BoardGameExtended bg : result2) {
-                    game.setImageString(bg.getImage());
+
+                    StorageUpload storageUpload = new StorageUpload();
+                    storageUpload.doPostToStorage(bg.getImage(),bg.getName());
+
+//                    doPostToStorage(String urlFileName, String saveFileName) {
+
+                    // Save file to temp location
+                    // Upload File to GCP
+                    // Clean up and remove file from temp location
                     System.out.println(bg.getImage());
+
+                    // use this new file name location to set the details in the object
+                    // serve up the file from GCP using the object filename.
+                    game.setImageString(bg.getImage());
                 }
             } catch (BggException e) {
                 e.printStackTrace();
